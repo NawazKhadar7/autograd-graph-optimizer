@@ -1,0 +1,28 @@
+{
+  "metrics": {
+    "elements": 4,
+    "finite_gradients": true,
+    "graph_equivalent": true,
+    "graph_nodes_after": 3,
+    "graph_nodes_before": 7,
+    "loss": 0.681906439897148,
+    "max_gradient_error": 5.99054139627242e-12
+  },
+  "output": {
+    "gradient": [
+      [
+        0.10492375001849272,
+        -0.5173127409159364
+      ],
+      [
+        0.8016508734623824,
+        0.872147264939956
+      ]
+    ],
+    "optimized_graph": [
+      "add",
+      "x",
+      5
+    ]
+  }
+}
