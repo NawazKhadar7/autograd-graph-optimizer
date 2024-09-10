@@ -1,0 +1,47 @@
+{
+  "algorithm": "Build a DAG of operations and closures, topologically sort reachable nodes and propagate adjoints in reverse. Broadcast gradients sum expanded axes. Numerical checks use central differences. Reference: https://www.cs.cmu.edu/~./aarti/ML21/lectures/Lecture9.pdf .",
+  "architecture": "Tensor operations \u2192 dynamic DAG \u2192 reverse traversal \u2192 parameter gradients. Pure expression AST \u2192 constant folding \u2192 equivalence check. NumPy executes forward array operations.",
+  "data_model": "Tensor = finite float ndarray, requires_grad, parents, adjoint. Expression nodes are add/mul tuples, numeric constants and named variables.",
+  "description": "A NumPy reverse-mode autodiff framework with independently checked gradients and a small pure-expression optimizer.",
+  "design": "Restrict operator semantics and explicitly reject nonfinite tensors. Stable cross entropy subtracts a row maximum treated as a constant; softmax shift invariance makes the derivative correct.",
+  "families": [
+    "scalar",
+    "broadcast",
+    "matmul",
+    "linear",
+    "mlp",
+    "softmax"
+  ],
+  "family_notes": [
+    "Differentiate a quadratic expression and compare central differences.",
+    "Reduce broadcast gradients back to the original operand shape.",
+    "Check both matrix multiplication paths against finite differences.",
+    "Differentiate a linear regression mean-squared error.",
+    "Check a nonlinear sigmoid layer.",
+    "Use shifted log-softmax to avoid exponential overflow."
+  ],
+  "file_count": 165,
+  "limitations": "No GPU backend, custom native matmul or automatic tensor-graph fusion. The expression optimizer is separate from the dynamic Tensor graph. Backward resets all reachable gradients per invocation. Matrix multiplication is 2D only; sum supports one axis. Recursive traversal is unsuitable for extremely deep graphs.",
+  "numpy": true,
+  "operations": "Run finite-difference checks after adding an operator. Test shapes, broadcasting, repeated use and near-boundary domains. Report local timing and numerical error rather than training-scale claims.",
+  "scope": "Tensor graph with reverse-mode autodiff, scalar/broadcast arithmetic, 2D matrix multiplication, reduction, slicing, stable sigmoid and cross entropy, Linear/MLP modules, SGD and constant/identity folding.",
+  "security": "Treat this as educational code; review it before handling trusted data.",
+  "sizes": [
+    2,
+    3,
+    4,
+    6,
+    8,
+    12
+  ],
+  "slug": "autograd-graph-optimizer",
+  "title": "Deep Learning Graph Optimization Framework",
+  "topics": [
+    "autograd",
+    "numpy",
+    "deep-learning",
+    "graph-optimization",
+    "linear-algebra"
+  ],
+  "workload_count": 36
+}
