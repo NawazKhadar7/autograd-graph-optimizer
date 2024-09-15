@@ -1,0 +1,21 @@
+{
+  "checks": {
+    "elements": {
+      "equals": 4
+    },
+    "finite_gradients": {
+      "equals": true
+    },
+    "graph_equivalent": {
+      "equals": true
+    },
+    "graph_nodes_after": {
+      "max": 3
+    },
+    "max_gradient_error": {
+      "max": 0.0001
+    }
+  },
+  "rationale": "Differentiate a linear regression mean-squared error.",
+  "synthetic": true
+}
