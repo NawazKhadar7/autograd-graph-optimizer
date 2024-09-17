@@ -1,0 +1,6 @@
+{
+  "family": "matmul",
+  "id": "matmul-narrow",
+  "seed": 910103,
+  "size": 1
+}
